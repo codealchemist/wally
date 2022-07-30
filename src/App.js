@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Offline, Online } from 'react-detect-offline'
+import HomePage from 'pages/HomePage'
+import SignPage from 'pages/SignPage'
+import 'antd/dist/antd.dark.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function log () {
+  console.log('[ App ]', ...arguments)
 }
 
-export default App;
+export default function App () {
+  return (
+    <>
+      <Offline>
+        <HomePage />
+      </Offline>
+
+      <Online>
+        {/* <SignPage /> */}
+        <HomePage />
+      </Online>
+    </>
+  )
+}
